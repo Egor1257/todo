@@ -128,7 +128,7 @@ h1 {
   right: 50%;
   position: relative;
   top: 30px;
-  transform: translateX(800px);
+  transform: translateX(800 px);
   cursor: pointer;
 }
 
