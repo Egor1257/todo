@@ -4,42 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO LIST</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="top-bar">
-        <h1>TODO LIST</h1>
+      <h1>TODO LIST</h1>
+
+      <div class="top-controls">
+        <div class="search">
+          <input type="text" placeholder="Search note..." />
+          <img class="lupa" src="Vector.svg" alt="Search" />
+        </div>
+        <button class="ALL">ALL</button>
         <button class="luna">
           <img src="Vector (2).svg" alt="Dark mode" />
         </button>
       </div>
 
-      <div class="search">
-        <input type="text" placeholder="Search note..." />
-        <img class="lupa" src="Vector.svg" alt="Search icon" />
-        <div>
-          <button class="ALL">ALL</button>
+      <div class="tasks">
+        <div class="marker">
+          <input type="checkbox" id="note1" />
+          <label for="note1">NOTE #1</label>
         </div>
-      </div>
 
-      <div class="marker">
-        <input type="checkbox" id="note1" />
-        <label for="note1">NOTE #1</label>
-      </div>
+        <div class="marker">
+          <input type="checkbox" id="note2" checked />
+          <label for="note2" class="done">NOTE #2</label>
+        </div>
 
-      <div class="marker">
-        <input type="checkbox" id="note2" checked />
-        <label for="note2" class="done">NOTE #2</label>
-      </div>
-
-      <div class="marker">
-        <input type="checkbox" id="note3" />
-        <label for="note3">NOTE #3</label>
+        <div class="marker">
+          <input type="checkbox" id="note3" />
+          <label for="note3">NOTE #3</label>
+        </div>
       </div>
 
       <button class="add">+</button>

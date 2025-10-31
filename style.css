@@ -3,86 +3,90 @@ body {
   color: #222;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  align-items: center;
+  height: 100vh;
   font-family: "Kanit", sans-serif;
 }
 
 .container {
-  width: 500px;
+  width: 550px;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 60px;
-  position: relative;
-}
-
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
   text-align: center;
-  flex: 1;
-  margin: 0;
+  margin-bottom: 30px;
   font-weight: 600;
-  color: #2a2550;
 }
 
-.luna {
-  background-color: #7b61ff;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+.top-controls {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  position: relative;
-  top: 60px;
-  position: relative;
-  left: 50px;
-}
-.luna:hover {
-  background-color: #6a53e0;
-}
-.luna img {
-  width: 20px;
-  height: 20px;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
 .search {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 15px;
-}
-.search input {
   flex: 1;
-  padding: 7px;
-  border-radius: 5px;
+  position: relative;
+  right: 20px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px 35px 10px 10px;
   border: 1px solid #6c63ff;
+  border-radius: 6px;
   color: #6c63ff;
 }
+
 .search input::placeholder {
   color: #c3c1e5;
 }
 
 .lupa {
-  position: relative;
-  right: 40px;
+  position: absolute;
+  left: 440px;
+  top: 9px;
+  width: 18px;
 }
 
 .ALL {
   background-color: #7b61ff;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 13px 30px;
+  border-radius: 6px;
+  padding: 10px 20px;
   cursor: pointer;
+  position: relative;
+  left: 40px;
+}
+
+.luna {
+  background-color: #7b61ff;
+  border: none;
+  border-radius: 6px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  left: 40px;
+}
+
+.luna img {
+  width: 18px;
+}
+
+.tasks {
+  margin-top: 20px;
 }
 
 .marker {
@@ -90,80 +94,60 @@ h1 {
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #c3c1e5;
-  padding: 8px 0;
-  font-weight: bold;
+  padding: 10px 0;
 }
-.marker:first-of-type {
-  border-top: none;
-}
-.marker label {
-  flex: 1;
-  margin-left: 8px;
-}
+
 .marker input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: #6c63ff;
 }
+
+.marker label {
+  flex: 1;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
 .done {
-  color: gray;
+  color: #b3b3b3;
 }
 
 .add {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background-color: #7b61ff;
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 24px;
-  margin: 70px auto 0;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 28px;
+  line-height: 1;
+  position: absolute;
+  bottom: 60px;
+  right: 50%;
   position: relative;
-  left: 250px;
-}
-.add:hover {
-  background-color: #6a53e0;
-}
-
-.filters {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-.filters button {
-  background: none;
-  border: 1px solid #7b61ff;
-  color: #7b61ff;
-  border-radius: 5px;
-  padding: 5px 10px;
+  top: 30px;
+  transform: translateX(800px);
   cursor: pointer;
-  transition: all 0.3s;
-}
-.filters button:hover {
-  background-color: #7b61ff;
-  color: #fff;
-}
-
-.delete {
-  background: none;
-  border: none;
-  color: #ff4b4b;
-  font-size: 18px;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: color 0.3s;
-}
-.delete:hover {
-  color: #d93636;
 }
 
 body.dark {
-  background-color: #19162d;
+  background-color: #1e1e2e;
+  color: #eee;
 }
+
 body.dark .container {
-  background-color: #2a2550;
-  color: #fff;
+  background-color: #2a2a3d;
+  border-color: #3a3a50;
+}
+
+body.dark .marker {
+  border-top: 1px solid #6c63ff;
+}
+
+body.dark .ALL,
+body.dark .luna,
+body.dark .add {
+  background-color: #9a85ff;
 }
