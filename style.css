@@ -1,0 +1,124 @@
+body {
+  background-color: #f9f9fc;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  font-family: "Kanit", sans-serif;
+}
+
+.container {
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 60px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.search input {
+  flex: 1;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+}
+.search input::placeholder {
+  color: #c3c1e5;
+}
+.search button {
+  background-color: #7b61ff;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.ALL {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  position: relative;
+  right: 15px;
+  background-color: #7b61ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 13px 30px;
+  cursor: pointer;
+}
+
+.marker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #c3c1e5;
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+.marker label {
+  flex: 1;
+  margin-left: 8px;
+}
+
+.marker input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #6c63ff;
+}
+
+.done {
+  color: gray;
+}
+
+.add {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #7b61ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  margin: 70px auto 0;
+  cursor: pointer;
+  position: relative;
+  left: 200px;
+}
+
+.lupa {
+  position: relative;
+  right: 40px;
+}
+
+.search text {
+  color: #6c63ff;
+}
+.luna {
+  background-color: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  top: 35px;
+  position: relative;
+  left: 500px;
+}
+.luna:hover {
+  background-color: #6a53e0;
+}
