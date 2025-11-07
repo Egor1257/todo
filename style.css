@@ -116,6 +116,8 @@ h1 {
   text-align: center;
   font-weight: 600;
   align-items: flex-start;
+  position: relative;
+  bottom: 80px;
 }
 .add {
   display: block;
@@ -138,7 +140,7 @@ h1 {
 .block {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,19 +148,23 @@ h1 {
 .modal {
   background-color: #fff;
   border-radius: 12px;
-  padding: 128px;
+  padding: 100px;
   width: 320px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   text-align: center;
 }
 .modal input {
-  width: 100%;
+  width: 130%;
   padding: 10px;
   border: 1.5px solid #7c6ef8;
   border-radius: 6px;
   outline: none;
   font-size: 0.95rem;
-  margin-bottom: 24px;
+  margin-bottom: 5px;
+  position: relative;
+  bottom: 70px;
+  position: relative;
+  right: 60px;
 }
 .buttons {
   display: flex;
@@ -177,6 +183,9 @@ button {
   background: #fff;
   color: #7c6ef8;
   margin-right: 10px;
+  top: 80px;
+  position: relative;
+  right: 80px;
 }
 .cancel:hover {
   background-color: #f2f0ff;
@@ -184,6 +193,10 @@ button {
 .apply {
   background: #7c6ef8;
   color: #fff;
+  position: relative;
+  top: 80px;
+  position: relative;
+  left: 80px;
 }
 .apply:hover {
   background: #6659d5;
