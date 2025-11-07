@@ -112,7 +112,11 @@ h1 {
 .done {
   color: #b3b3b3;
 }
-
+.modal h2 {
+  text-align: center;
+  font-weight: 600;
+  align-items: flex-start;
+}
 .add {
   display: block;
   width: 45px;
@@ -128,26 +132,60 @@ h1 {
   right: 50%;
   position: relative;
   top: 30px;
-  transform: translateX(800 px);
+  transform: translateX(800px);
   cursor: pointer;
 }
-
-body.dark {
-  background-color: #1e1e2e;
-  color: #eee;
+.block {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-body.dark .container {
-  background-color: #2a2a3d;
-  border-color: #3a3a50;
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 128px;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  text-align: center;
 }
-
-body.dark .marker {
-  border-top: 1px solid #6c63ff;
+.modal input {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #7c6ef8;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
 }
-
-body.dark .ALL,
-body.dark .luna,
-body.dark .add {
-  background-color: #9a85ff;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1.5px solid #7c6ef8;
+}
+.cancel {
+  background: #fff;
+  color: #7c6ef8;
+  margin-right: 10px;
+}
+.cancel:hover {
+  background-color: #f2f0ff;
+}
+.apply {
+  background: #7c6ef8;
+  color: #fff;
+}
+.apply:hover {
+  background: #6659d5;
+  text-align: center;
 }
