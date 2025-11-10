@@ -1,39 +1,40 @@
-const modal = document.getElementById("modal");
-const addBtn = document.getElementById("addBtn");
-const cancelBtn = document.getElementById("cancel");
-const applyBtn = document.getElementById("apply");
-const input = document.getElementById("newNoteInput");
-const tasks = document.getElementById("tasks");
-
+const addBtn = document.querySelector(".add");
+const block = document.querySelector(".block");
+const cancelBtn = document.querySelector(".cancel");
+const applyBtn = document.querySelector(".apply");
+const inputField = document.querySelector(".modal input");
+const tasksContainer = document.querySelector(".tasks");
 
 addBtn.addEventListener("click", () => {
-  modal.classList.add("active");
-  input.value = "";
-  input.focus();
+  console.log("+");
+  block.style.display = "flex";
 });
-
 
 cancelBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
+  console.log("CANCEL");
+  block.style.display = "none";
 });
-
-
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) modal.classList.remove("active");
-});
-
 
 applyBtn.addEventListener("click", () => {
-  const text = input.value.trim();
+  const text = inputField.value.trim();
   if (text === "") return;
 
   const note = document.createElement("div");
   note.classList.add("marker");
-  note.innerHTML = 
-    <input type="checkbox" />
-    <label>${text}</label>
-    ;
-  tasks.appendChild(note);
 
-  modal.classList.remove("active");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
+  const label = document.createElement("label");
+  label.textContent = text;
+
+  checkbox.addEventListener("change", () => {
+    label.classList.toggle("done", checkbox.checked);
+  });
+
+  note.appendChild(checkbox);
+  note.appendChild(label);
+  tasksContainer.appendChild(note);
+
+  block.style.display = "none";
 });
