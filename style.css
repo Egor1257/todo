@@ -6,12 +6,33 @@ body {
   align-items: center;
   height: 100vh;
   font-family: "Kanit", sans-serif;
+  transition: 0.5s;
 }
-
+body.dark {
+  background-color: #000000;
+  color: #f1f1f1;
+}
+body.dark .search input {
+  background-color: #000000;
+}
+body.dark .block .modal {
+  background-color: #000000;
+  color: #f1f1f1;
+  border: 1px solid #fff;
+}
+body.dark .cancel {
+  background-color: #000000;
+  color: #f1f1f1;
+}
+body.dark .your-note {
+  background-color: #000000;
+  color: #f1f1f1;
+}
+body.dark .marker {
+  color: #ffffff;
+}
 .container {
   width: 550px;
-  background-color: #fff;
-  border: 1px solid #ddd;
   border-radius: 15px;
   padding: 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -95,9 +116,10 @@ h1 {
   justify-content: space-between;
   border-top: 1px solid #c3c1e5;
   padding: 10px 0;
+  color: #000000;
 }
 
-.marker input[type="checkbox"] {
+input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: #6c63ff;
@@ -109,15 +131,13 @@ h1 {
   font-weight: 500;
 }
 
-.done {
-  color: #b3b3b3;
-}
 .modal h2 {
   text-align: center;
   font-weight: 600;
   align-items: flex-start;
   position: relative;
   bottom: 80px;
+  color: #000000;
 }
 .add {
   display: block;
