@@ -4,23 +4,39 @@ const cancelBtn = document.querySelector(".cancel");
 const applyBtn = document.querySelector(".apply");
 const inputField = document.querySelector(".modal input");
 const tasksContainer = document.querySelector(".tasks");
+const searchInput = document.querySelector(".search input");
+const filterSelect = document.querySelector(".filter");
 
+// --- открыть модалку ---
 addBtn.addEventListener("click", () => {
-  console.log("+");
   block.style.display = "flex";
 });
 
+// --- закрыть модалку ---
 cancelBtn.addEventListener("click", () => {
-  console.log("CANCEL");
   block.style.display = "none";
 });
 
+// --- добавление новой заметки ---
 applyBtn.addEventListener("click", () => {
   const text = inputField.value.trim();
   if (text === "") return;
 
+  createNote(text);
+
+  inputField.value = "";
+  block.style.display = "none";
+});
+
+// ======= ФУНКЦИЯ СОЗДАНИЯ ЗАМЕТКИ =========
+function createNote(text) {
   const note = document.createElement("div");
-  note.classList.add("marker");
+  note.classList.add("marker", "item");
+
+  const left = document.createElement("div");
+  left.style.display = "flex";
+  left.style.alignItems = "center";
+  left.style.gap = "10px";
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -32,12 +48,45 @@ applyBtn.addEventListener("click", () => {
     label.classList.toggle("done", checkbox.checked);
   });
 
-  note.appendChild(checkbox);
-  note.appendChild(label);
-  tasksContainer.appendChild(note);
+  left.appendChild(checkbox);
+  left.appendChild(label);
 
-  block.style.display = "none";
+  // ---- Кнопка EDIT ----
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "EDIT";
+  editBtn.classList.add("edit-btn");
+
+  editBtn.addEventListener("click", () => {
+    const newText = prompt("Edit note:", label.textContent);
+    if (newText && newText.trim() !== "") {
+      label.textContent = newText.trim();
+    }
+  });
+
+  // ---- Кнопка DELETE ----
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "DEL";
+  deleteBtn.classList.add("delete-btn");
+
+  deleteBtn.addEventListener("click", () => {
+    note.style.opacity = "0";
+    note.style.transform = "translateX(-20px)";
+    setTimeout(() => note.remove(), 200);
+  });
+
+  note.appendChild(left);
+  note.appendChild(editBtn);
+  note.appendChild(deleteBtn);
+
+  tasksContainer.appendChild(note);
+}
+
+// ====== Закрытие модалки кликом по фону ======
+block.addEventListener("click", (e) => {
+  if (e.target === block) block.style.display = "none";
 });
+
+// ====== ТЕМНАЯ ТЕМА ======
 const themeToggleBtn = document.getElementById("themeToggle");
 const themeToggleBtn_img = document.querySelector("#themeToggle img");
 
@@ -50,29 +99,30 @@ themeToggleBtn.addEventListener("click", () => {
     themeToggleBtn_img.setAttribute("src", "moon.svg");
   }
 });
-// const text_note = document.querySelector(".your-note").value;
-// const label = document.createElement("label");
-// const input = document.createElement("input");
-// const span_fake_cb = document.createElement("span");
-// const span_text = document.createElement("span");
 
-// label.classList.add("item");
-// input.classList.add("cb");
-// input.setAttribute("type", "checkbox");
+// ====== ПОИСК ======
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
 
-// span_fake_cb.classList.add("fake-cb");
-// span_fake_cb.setAttribute("aria-hidden", "true");
+  document.querySelectorAll(".item").forEach((note) => {
+    const text = note.querySelector("label").textContent.toLowerCase();
+    note.style.display = text.includes(value) ? "flex" : "none";
+  });
+});
 
-// span_text.classList.add("text");
-// span_text.innerText = text_note;
+// ====== ФИЛЬТР (ALL / Active / Done) ======
+filterSelect.addEventListener("change", () => {
+  const value = filterSelect.value;
 
-// label.appendChild(input);
-// label.appendChild(span_fake_cb);
-// label.appendChild(span_text);
+  document.querySelectorAll(".item").forEach((note) => {
+    const isDone = note.querySelector("input[type='checkbox']").checked;
 
-// document.querySelector(".tasks").appendChild(label);
-
-// document.querySelector(".block").style.display = "none";
-
-
-
+    if (value === "ALL") {
+      note.style.display = "flex";
+    } else if (value === "Active") {
+      note.style.display = isDone ? "none" : "flex";
+    } else if (value === "Done") {
+      note.style.display = isDone ? "flex" : "none";
+    }
+  });
+});

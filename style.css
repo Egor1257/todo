@@ -72,20 +72,20 @@ h1 {
 
 .lupa {
   position: absolute;
-  left: 440px;
+  left: 400px;
   top: 9px;
   width: 18px;
 }
 
-.ALL {
+.filter {
   background-color: #7b61ff;
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   cursor: pointer;
   position: relative;
-  left: 40px;
+  left: 35px;
 }
 
 .luna {
@@ -219,4 +219,34 @@ input[type="checkbox"] {
 .apply:hover {
   background: #6659d5;
   text-align: center;
+}
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background-color: #7c6ef8;
+  color: #fff;
+}
+.edit-btn:hover {
+  background-color: #6659d5;
+}
+
+.delete-btn {
+  background-color: #7c6ef8;
+  color: #fff;
+}
+.delete-btn:hover {
+  background-color: #6659d5;
+}
+
+.marker {
+  transition: 0.2s ease;
 }

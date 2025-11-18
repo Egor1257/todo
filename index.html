@@ -17,9 +17,14 @@
       <div class="top-controls">
         <div class="search">
           <input type="text" placeholder="Search note..." />
+          <div class="search_history" style="display:none"></div>
           <img class="lupa" src="Vector.svg" alt="Search" />
         </div>
-        <button class="ALL">ALL</button>
+        <select class="filter">
+          <option value="ALL">ALL</option>
+          <option value="Active">Active</option>
+          <option value="Done">Done</option>
+        </select>
         <button class="luna" id="themeToggle">
           <img src="moon.svg" alt="Dark mode" />
         </button>
