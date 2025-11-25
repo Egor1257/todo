@@ -20,6 +20,10 @@ body.dark .block .modal {
   color: #f1f1f1;
   border: 1px solid #fff;
 }
+body.dark .block .modal h2 {
+  background-color: #000000;
+  color: #f1f1f1;
+}
 body.dark .cancel {
   background-color: #000000;
   color: #f1f1f1;
@@ -125,10 +129,18 @@ input[type="checkbox"] {
   accent-color: #6c63ff;
 }
 
+/* текст заметки */
 .marker label {
   flex: 1;
   margin-left: 8px;
   font-weight: 500;
+}
+
+/* ----------------- ЗАЧЁРКИВАНИЕ ТЕКСТА МАРКЕРА ----------------- */
+.marker label.done {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
 }
 
 .modal h2 {
@@ -238,7 +250,6 @@ input[type="checkbox"] {
 .edit-btn:hover {
   background-color: #6659d5;
 }
-
 .delete-btn {
   background-color: #7c6ef8;
   color: #fff;

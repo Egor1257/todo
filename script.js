@@ -1,3 +1,6 @@
+// ======================
+// Получаем элементы DOM
+// ======================
 const addBtn = document.querySelector(".add");
 const block = document.querySelector(".block");
 const cancelBtn = document.querySelector(".cancel");
@@ -6,18 +9,33 @@ const inputField = document.querySelector(".modal input");
 const tasksContainer = document.querySelector(".tasks");
 const searchInput = document.querySelector(".search input");
 const filterSelect = document.querySelector(".filter");
+const themeToggleBtn = document.getElementById("themeToggle");
+const themeToggleBtn_img = document.querySelector("#themeToggle img");
 
+// ======================
 // --- открыть модалку ---
+// ======================
 addBtn.addEventListener("click", () => {
   block.style.display = "flex";
 });
 
+// ======================
 // --- закрыть модалку ---
+// ======================
 cancelBtn.addEventListener("click", () => {
   block.style.display = "none";
 });
 
+// ======================
+// --- закрытие модалки кликом по фону ---
+// ======================
+block.addEventListener("click", (e) => {
+  if (e.target === block) block.style.display = "none";
+});
+
+// ======================
 // --- добавление новой заметки ---
+// ======================
 applyBtn.addEventListener("click", () => {
   const text = inputField.value.trim();
   if (text === "") return;
@@ -28,10 +46,12 @@ applyBtn.addEventListener("click", () => {
   block.style.display = "none";
 });
 
+// ======================
 // ======= ФУНКЦИЯ СОЗДАНИЯ ЗАМЕТКИ =========
+// ======================
 function createNote(text) {
   const note = document.createElement("div");
-  note.classList.add("marker", "item");
+  note.classList.add("marker", "item"); // "item" нужен для поиска/фильтра
 
   const left = document.createElement("div");
   left.style.display = "flex";
@@ -44,8 +64,11 @@ function createNote(text) {
   const label = document.createElement("label");
   label.textContent = text;
 
+  // --------- ЛОГИКА ЧЕКБОКСА ------------
   checkbox.addEventListener("change", () => {
-    label.classList.toggle("done", checkbox.checked);
+    label.classList.toggle("done", checkbox.checked); // зачёркивание
+    note.classList.toggle("done", checkbox.checked); // для фильтра
+    applyFilter(); // обновляем фильтр сразу
   });
 
   left.appendChild(checkbox);
@@ -69,9 +92,7 @@ function createNote(text) {
   deleteBtn.classList.add("delete-btn");
 
   deleteBtn.addEventListener("click", () => {
-    note.style.opacity = "0";
-    note.style.transform = "translateX(-20px)";
-    setTimeout(() => note.remove(), 200);
+    note.remove();
   });
 
   note.appendChild(left);
@@ -81,26 +102,9 @@ function createNote(text) {
   tasksContainer.appendChild(note);
 }
 
-// ====== Закрытие модалки кликом по фону ======
-block.addEventListener("click", (e) => {
-  if (e.target === block) block.style.display = "none";
-});
-
-// ====== ТЕМНАЯ ТЕМА ======
-const themeToggleBtn = document.getElementById("themeToggle");
-const themeToggleBtn_img = document.querySelector("#themeToggle img");
-
-themeToggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  if (themeToggleBtn_img.getAttribute("src") === "moon.svg") {
-    themeToggleBtn_img.setAttribute("src", "sun.svg");
-  } else {
-    themeToggleBtn_img.setAttribute("src", "moon.svg");
-  }
-});
-
-// ====== ПОИСК ======
+// ======================
+// ====== ПОИСК ЗАМЕТОК ======
+// ======================
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
 
@@ -110,12 +114,17 @@ searchInput.addEventListener("input", () => {
   });
 });
 
-// ====== ФИЛЬТР (ALL / Active / Done) ======
-filterSelect.addEventListener("change", () => {
-  const value = filterSelect.value;
+// ======================
+// ====== ФИЛЬТР ACTIVE / DONE / ALL ======
+// ======================
+filterSelect.addEventListener("change", applyFilter);
 
-  document.querySelectorAll(".item").forEach((note) => {
-    const isDone = note.querySelector("input[type='checkbox']").checked;
+function applyFilter() {
+  const value = filterSelect.value;
+  const notes = document.querySelectorAll(".item");
+
+  notes.forEach((note) => {
+    const isDone = note.classList.contains("done");
 
     if (value === "ALL") {
       note.style.display = "flex";
@@ -125,4 +134,16 @@ filterSelect.addEventListener("change", () => {
       note.style.display = isDone ? "flex" : "none";
     }
   });
+}
+// ======================
+// ====== ТЕМНАЯ ТЕМА ======
+// ======================
+themeToggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (themeToggleBtn_img.getAttribute("src") === "moon.svg") {
+    themeToggleBtn_img.setAttribute("src", "sun.svg");
+  } else {
+    themeToggleBtn_img.setAttribute("src", "moon.svg");
+  }
 });
